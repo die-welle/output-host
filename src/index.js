@@ -3,7 +3,13 @@ import getMyIp from 'get-my-ip';
 import copyPaste from 'copy-paste';
 import chalk from 'chalk';
 
-export default (options = {}) => {
+export default (options) => {
+
+	if (typeof options === 'string' || typeof options === 'number') {
+		options = { port: options };
+	}
+	if (!options || typeof options !== 'object') { options = {}; }
+
 	const {
 		useCopy, useLocal, useExternal, name, port
 	} = {
