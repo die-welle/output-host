@@ -1,5 +1,5 @@
 
-var outputHost = require('../lib').default;
+var outputHost = require('../lib');
 
 outputHost({
 
