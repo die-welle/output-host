@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+
+const outputHost = require('../lib');
+const pkg = require('../package.json');
+
+const argv = require('yargs')
+	.usage('$0 [args]')
+	.options({
+		n: {
+			alias: 'name',
+			desc: 'Server name',
+			type: 'string',
+		},
+		p: {
+			alias: 'port',
+			desc: 'Server port',
+			type: 'number',
+		},
+		host: {
+			desc: 'Host',
+			type: 'string',
+		},
+		path: {
+			desc: 'URL path',
+			default: '',
+			type: 'string',
+		},
+		'use-local': {
+			desc: 'Enable output local host',
+			default: true,
+			type: 'bool',
+		},
+		'use-external': {
+			desc: 'Enable output external host',
+			default: true,
+			type: 'bool',
+		},
+		'use-copy': {
+			desc: 'Auto copy external host to system clipboard',
+			default: true,
+			type: 'bool',
+		},
+		'use-color': {
+			desc: 'Enable color',
+			default: true,
+			type: 'bool',
+		},
+	})
+	.alias('h', 'help')
+	.help()
+	.version(pkg.version)
+	.argv
+;
+
+const config = Object
+	.keys(argv)
+	.filter((key) => typeof argv[key] !== 'undefined')
+	.reduce((config, key) => Object.assign(config, { [key]: argv[key] }), {
+		port: process.env.PORT || 3000,
+	})
+;
+
+outputHost(config);
