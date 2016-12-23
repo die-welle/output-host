@@ -62,7 +62,7 @@ app.listen(2333, outputHost.curry());
 ##### cli
 
 ```bash
-    $ output-host -p 2333
+ $ output-host -p 2333
 
 # output:
 #
@@ -74,8 +74,9 @@ app.listen(2333, outputHost.curry());
 
 Using [npm](https://www.npmjs.com/):
 
-    $ npm install output-host --save-dev
-
+```bash
+ $ npm install output-host --save-dev
+```
 
 ## License
 
