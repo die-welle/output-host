@@ -6,6 +6,11 @@
   "bin": {
     "output-host": "bin/output-host"
   },
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "start": "npm test -- -w",
     "test": "mocha --compilers js:babel-core/register test",
