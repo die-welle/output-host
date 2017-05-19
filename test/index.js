@@ -3,6 +3,7 @@ import assert from 'assert';
 import http from 'http';
 import outputHost from '../src';
 import getMyIp from 'get-my-ip';
+import clipboardy from 'clipboardy';
 
 describe('output-host', function () {
 	let server = http.createServer();
@@ -17,6 +18,11 @@ describe('output-host', function () {
 		const result = outputHost({ port });
 		assert.equal(result.port, port);
 		assert.equal(result.host, getMyIp());
+	});
+
+	it('config.useCopy', () => {
+		outputHost({ useCopy: true });
+		assert(clipboardy.readSync().startsWith('http://'));
 	});
 
 	it('config.path', () => {

@@ -1,6 +1,6 @@
 
 import getMyIp from 'get-my-ip';
-import copyPaste from 'copy-paste';
+import clipboardy from 'clipboardy';
 import chalk from 'chalk';
 
 export default function outputHost(config = {}, next) {
@@ -72,7 +72,7 @@ export default function outputHost(config = {}, next) {
 		);
 	}
 
-	if (useCopy) { copyPaste.copy(externalURL || localURL); }
+	if (useCopy) { clipboardy.writeSync(externalURL || localURL); }
 
 	(typeof next === 'function') && next();
 
