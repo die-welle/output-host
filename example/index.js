@@ -13,5 +13,7 @@ outputHost({
 	useExternal: true,
 	useCopy: true,
 	useColor: true,
+	launch: 'chrome',
+	launchDelay: 2000,
 
 });
