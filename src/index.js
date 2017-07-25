@@ -57,7 +57,8 @@ export default function outputHost(config = {}, next) {
 		launchDelay,
 	} = config;
 
-	const localURL = `${protocol}://localhost:${port}${path}`;
+	const urlPath = path ? (/^\//.test(path) ? path : `/${path}`) : '';
+	const localURL = `${protocol}://localhost:${port}${urlPath}`;
 	const color = useColor ? chalk : new chalk.constructor({ enabled: false });
 	let externalURL;
 
@@ -69,7 +70,7 @@ export default function outputHost(config = {}, next) {
 	}
 
 	if (useExternal && host) {
-		externalURL = `${protocol}://${host}:${port}${path}`;
+		externalURL = `${protocol}://${host}:${port}${urlPath}`;
 
 		logger(
 			color.yellow(`${name} External URL`),
