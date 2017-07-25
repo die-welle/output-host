@@ -28,7 +28,14 @@
     "host",
     "url",
     "copy",
-    "ip-address"
+    "ip-address",
+    "protocol",
+    "developing",
+    "launch",
+    "chrome",
+    "firefox",
+    "port",
+    "cli"
   ],
   "author": "Cap.32",
   "license": "MIT",
