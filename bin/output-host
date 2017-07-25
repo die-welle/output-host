@@ -25,22 +25,27 @@ const argv = require('yargs')
 			default: '',
 			type: 'string',
 		},
-		'use-local': {
+		protocol: {
+			desc: 'URL protocol',
+			default: 'http',
+			type: 'string',
+		},
+		'local': {
 			desc: 'Enable output local host',
 			default: true,
 			type: 'bool',
 		},
-		'use-external': {
+		'external': {
 			desc: 'Enable output external host',
 			default: true,
 			type: 'bool',
 		},
-		'use-copy': {
+		'copy': {
 			desc: 'Auto copy external host to system clipboard',
 			default: true,
 			type: 'bool',
 		},
-		'use-color': {
+		'color': {
 			desc: 'Enable color',
 			default: true,
 			type: 'bool',
