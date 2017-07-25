@@ -50,6 +50,16 @@ const argv = require('yargs')
 			default: true,
 			type: 'bool',
 		},
+		'launch': {
+			desc: 'Launch browser automatically',
+			choices: ['chrome', 'firefox', 'none'],
+			default: 'none',
+		},
+		'launch-delay': {
+			desc: 'Launch browser delay',
+			type: 'number',
+			default: 2000,
+		},
 	})
 	.alias('h', 'help')
 	.help()

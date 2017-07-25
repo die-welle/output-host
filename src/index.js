@@ -2,6 +2,8 @@
 import getMyIp from 'get-my-ip';
 import clipboardy from 'clipboardy';
 import chalk from 'chalk';
+import { launch as chromeLaunch } from 'chrome-launcher';
+import firefoxLaunch from 'firefox-launch';
 
 export default function outputHost(config = {}, next) {
 	if (typeof config === 'string' || typeof config === 'number') {
@@ -36,6 +38,7 @@ export default function outputHost(config = {}, next) {
 		useColor: true,
 		logger: console.log.bind(console),
 		path: '',
+		launchDelay: 2000,
 		...config,
 	};
 
@@ -50,6 +53,8 @@ export default function outputHost(config = {}, next) {
 		protocol,
 		logger,
 		path,
+		launch,
+		launchDelay,
 	} = config;
 
 	const localURL = `${protocol}://localhost:${port}${path}`;
@@ -72,7 +77,16 @@ export default function outputHost(config = {}, next) {
 		);
 	}
 
-	if (useCopy) { clipboardy.writeSync(externalURL || localURL); }
+	const startingUrl = externalURL || localURL;
+
+	if (useCopy) { clipboardy.writeSync(startingUrl); }
+
+	if (launch && launch !== 'none') {
+		setTimeout(() => {
+			if (launch === 'firefox') { firefoxLaunch(startingUrl); }
+			else { chromeLaunch({ startingUrl }); }
+		}, launchDelay);
+	}
 
 	(typeof next === 'function') && next();
 
