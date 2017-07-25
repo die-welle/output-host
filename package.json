@@ -15,7 +15,9 @@
     "start": "npm test -- -w",
     "test": "mocha --compilers js:babel-core/register test",
     "example": "node example",
-    "build": "rimraf lib && mkdirp lib && babel src/index.js --out-file lib/index.js",
+    "prebuild": "rimraf lib && mkdirp lib",
+    "build": "babel src/index.js --out-file lib/index.js",
+    "watch:build": "babel -w src/index.js --out-file lib/index.js",
     "preversion": "npm run build && npm test"
   },
   "repository": {
