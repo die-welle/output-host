@@ -1,6 +1,6 @@
 {
   "name": "output-host",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "A simple and convenient tool to output host for developing server.",
   "main": "lib/index.js",
   "bin": {
