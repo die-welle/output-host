@@ -51,7 +51,7 @@ const argv = require('yargs')
 			type: 'bool',
 		},
 		'launch': {
-			desc: 'Launch browser automatically',
+			desc: 'Auto launch browser',
 			choices: ['chrome', 'firefox', 'none'],
 			default: 'none',
 		},

@@ -13,7 +13,7 @@ This tool makes these easily.
 
 ## Quick Start
 
-##### outputHost([options])
+#### outputHost([options])
 
 ```js
 import outputHost from 'output-host';
@@ -26,7 +26,7 @@ app.listen(port, () => outputHost({
 
     // Here's all options.
 
-    port, // Defaults to `3000`
+    port: 3000, // Defaults to `3000`
     name: 'Server', // Prefix name. Defaults to 'Server'
     protocol: 'http', // Defaults to `http`
     useLocal: true, // Enable to log localhost. Defaults to `true`
@@ -34,7 +34,8 @@ app.listen(port, () => outputHost({
     useCopy: true, // Enable to copy external host. So you could easy to paste to browser address bar. Defaults to `true`
     useColor: true, // Enable color. Defaults to `true`
     logger: console.log.bind(console), // Custom logger function. Defaults to `console.log.bind(console)`
-
+    launch: 'none', // Enable to auto launch browser. Value could be one of 'none', 'chrome' or 'firefox'. Defaults to 'none'
+    launchDelay: 2000, // Launch browser delay. Only work if `launch=chrome|firefox`. Defaults to `2000`
 }));
 
 // output:
@@ -46,7 +47,7 @@ app.listen(port, () => outputHost({
 
 ```
 
-##### outputHost.curry([options, callback])
+#### outputHost.curry([options, callback])
 
 ```js
 
@@ -59,7 +60,7 @@ app.listen(2333, outputHost.curry());
 
 ```
 
-##### cli
+#### cli
 
 ```bash
  $ output-host -p 2333
@@ -69,6 +70,9 @@ app.listen(2333, outputHost.curry());
 #    Server Local URL http://localhost:2333
 #    Server External URL http://192.168.1.123:2333
 ```
+
+Please run `output-host -h` to learn more.
+
 
 ## Installation
 
