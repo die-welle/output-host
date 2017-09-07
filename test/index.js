@@ -20,8 +20,8 @@ describe('output-host', function () {
 		assert.equal(result.host, getMyIp());
 	});
 
-	it('config.useCopy', () => {
-		outputHost({ useCopy: true });
+	it('config.copy', () => {
+		outputHost({ copy: true });
 		assert(clipboardy.readSync().startsWith('http://'));
 	});
 
