@@ -29,10 +29,10 @@ app.listen(port, () => outputHost({
     port: 3000, // Defaults to `3000`
     name: 'Server', // Prefix name. Defaults to 'Server'
     protocol: 'http', // Defaults to `http`
-    useLocal: true, // Enable to log localhost. Defaults to `true`
-    useExternal: true, // Enable to log external host. Defaults to `true`
-    useCopy: true, // Enable to copy external host. So you could easy to paste to browser address bar. Defaults to `true`
-    useColor: true, // Enable color. Defaults to `true`
+    local: true, // Enable to log localhost. Defaults to `true`
+    external: true, // Enable to log external host. Defaults to `true`
+    copy: true, // Enable to copy external host. So you could easy to paste to browser address bar. Defaults to `true`
+    color: true, // Enable color. Defaults to `true`
     logger: console.log.bind(console), // Custom logger function. Defaults to `console.log.bind(console)`
     launch: 'none', // Enable to auto launch browser. Value could be one of 'none', 'chrome' or 'firefox'. Defaults to 'none'
     launchDelay: 2000, // Launch browser delay. Only work if `launch=chrome|firefox`. Defaults to `2000`
