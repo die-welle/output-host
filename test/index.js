@@ -25,6 +25,12 @@ describe('output-host', function () {
 		assert(clipboardy.readSync().startsWith('http://'));
 	});
 
+	it('config.host', () => {
+		const host = 'aweso.me';
+		const result = outputHost({ host });
+		assert(result.externalURL.includes(host))
+	});
+
 	it('config.path', () => {
 		const path = '/fork';
 		const result = outputHost({ path });
