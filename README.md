@@ -27,7 +27,7 @@ app.listen(port, () => outputHost({
     // Here's all options.
 
     port: 3000, // Defaults to `3000`
-    host: '192.168.1.123', // Defaults to current ip address
+    host: 'localhost', // Host name. Defaults to 'localhost'
     name: 'Server', // Prefix name. Defaults to 'Server'
     protocol: 'http', // Defaults to `http`
     local: true, // Enable to log localhost. Defaults to `true`
