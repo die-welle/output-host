@@ -17,7 +17,7 @@ describe('output-host', function () {
 		const port = 123;
 		const result = outputHost({ port });
 		assert.equal(result.port, port);
-		assert.equal(result.host, getMyIp());
+		assert.equal(result.host, 'localhost');
 	});
 
 	it('config.copy', () => {
@@ -28,7 +28,7 @@ describe('output-host', function () {
 	it('config.host', () => {
 		const host = 'aweso.me';
 		const result = outputHost({ host });
-		assert(result.externalURL.includes(host))
+		assert(result.localURL.includes(host))
 	});
 
 	it('config.path', () => {

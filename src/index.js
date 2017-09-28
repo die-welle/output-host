@@ -36,25 +36,20 @@ export default function outputHost(config = {}, next) {
 	}
 	if (typeof config !== 'object') { config = {}; }
 
-	if (this && this.address) {
-		const { port, address } = this.address();
-		const protocol = this.getTicketKeys ? 'https' : 'http';
-		const host = [
-			'::',
-			'127.0.0.1',
-			'0.0.0.0',
-		].includes(address) ? getMyIp() : address;
+	let ipAddress = getMyIp();
 
+	if (this && this.address) {
+		const { port } = this.address();
+		const protocol = this.getTicketKeys ? 'https' : 'http';
 		Object.assign(config, {
 			port,
-			host,
 			protocol,
 		});
 	}
 
 	config = {
 		port: 3000,
-		host: getMyIp(),
+		host: 'localhost',
 		protocol: 'http',
 		name: 'Server',
 		copy: true,
@@ -88,7 +83,7 @@ export default function outputHost(config = {}, next) {
 	;
 	const enhancedPort = isDefaultPort ? '' : `:${port}`;
 	const urlPath = path ? (/^\//.test(path) ? path : `/${path}`) : '';
-	const localURL = `${protocol}://localhost${enhancedPort}${urlPath}`;
+	const localURL = `${protocol}://${host}${enhancedPort}${urlPath}`;
 	const chk = color ? chalk : new chalk.constructor({ enabled: false });
 	let externalURL;
 
@@ -99,8 +94,8 @@ export default function outputHost(config = {}, next) {
 		);
 	}
 
-	if (external && host) {
-		externalURL = `${protocol}://${host}${enhancedPort}${urlPath}`;
+	if (external) {
+		externalURL = `${protocol}://${ipAddress}${enhancedPort}${urlPath}`;
 
 		logger(
 			chk.yellow(`${name} External URL`),
